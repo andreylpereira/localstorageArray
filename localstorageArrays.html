@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Aula</title>
+</head>
+
+<body>
+
+    <h1>Grave o seu nome nessa pagina:</h1>
+
+    <h3>Digite seu nome abaixo e clique em Enviar</h3>
+    
+        Nome: <input type="text" name="nome" id="nome" placeholder="Digite o nome">
+        <br>
+        Idade: <input type="text" name="idade" id="idade" placeholder="Digite a idade">  
+<br>
+<br>
+    <div=buttons>
+        <input type="button" value="Armazenar" onclick="Armazenar()">
+        <input type="button" value="Mostrar" onclick="Mostrar()">
+    </div=buttons>
+
+    <div id="ret">
+
+    </div>
+
+    <script>
+
+        let turma = []
+        function Armazenar(){
+            
+            
+            let inputNome = document.getElementById('nome').value
+            let inputIdade = document.getElementById('idade').value
+            let aluno = {inputNome, inputIdade}
+            turma.push(aluno)
+            localStorage.setItem("a", JSON.stringify(turma));
+            
+        }
+
+        function Mostrar(){
+    
+            let retornar = JSON.parse(localStorage.getItem("a"))
+            document.getElementById('ret').innerHTML = ""
+            for (let i=0; i<turma.length; i++)
+                document.getElementById('ret').innerHTML +=  `${retornar[i].nome}, ${retornar[i].idade} <br>`
+        }
+
+    </script>
+    
+</body>
+
+</html>
